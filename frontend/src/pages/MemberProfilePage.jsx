@@ -102,9 +102,9 @@ export default function MemberProfilePage() {
       <div>
         {activeTab === 'overview' && <OverviewTab member={member} />}
         {activeTab === 'spiritual' && <SpiritualJourneyTab member={member} onRefresh={loadMember} />}
-        {activeTab === 'participation' && <ParticipationTab />}
-        {activeTab === 'documents' && <DocumentsTab />}
-        {activeTab === 'history' && <HistoryTab />}
+        {activeTab === 'participation' && <ParticipationTab member={member} onRefresh={loadMember} />}
+        {activeTab === 'documents' && <DocumentsTab member={member} />}
+        {activeTab === 'history' && <HistoryTab member={member} />}
       </div>
 
       <Modal open={isEditOpen} onClose={() => setIsEditOpen(false)} title={t('common.edit')} size="lg">

@@ -18,7 +18,7 @@ export default function PublicLayout() {
   return (
     <div className="min-h-screen bg-white dark:bg-neutral-950">
       <ScrollToTop />
-      <PublicHeader church={church} />
+      <PublicHeader />
       <main>
         <Outlet context={{ church }} />
       </main>

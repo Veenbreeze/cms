@@ -2,7 +2,7 @@ import uuid
 
 from django.db import models
 
-from apps.core.constants import Gender, MilestoneStatus, MilestoneType
+from apps.core.constants import Gender, MilestoneStatus, MilestoneType, ParticipationCategory, ParticipationStatus
 from apps.core.models import BaseModel
 from apps.core.validators import validate_document_file, validate_image_file
 
@@ -93,3 +93,22 @@ class MemberSpiritualRecord(BaseModel):
     def __str__(self):
         label = self.custom_label or self.get_milestone_type_display()
         return f"{label} — {self.member.full_name}"
+
+
+class MemberParticipation(BaseModel):
+    member = models.ForeignKey(Member, on_delete=models.CASCADE, related_name="participation_records")
+    category = models.CharField(max_length=20, choices=ParticipationCategory.choices)
+    activity_name = models.CharField(max_length=200)
+    date = models.DateField()
+    status = models.CharField(max_length=10, choices=ParticipationStatus.choices, default=ParticipationStatus.ATTENDED)
+    notes = models.TextField(blank=True)
+    recorded_by = models.ForeignKey(
+        "accounts.User", on_delete=models.SET_NULL, null=True, blank=True, related_name="participation_records"
+    )
+
+    class Meta:
+        ordering = ["-date", "-created_at"]
+        indexes = [models.Index(fields=["member", "date"]), models.Index(fields=["category", "date"])]
+
+    def __str__(self):
+        return f"{self.activity_name} — {self.member.full_name} ({self.date})"

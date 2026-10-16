@@ -9,7 +9,7 @@ export default function MediaTeachingSection({ lesson }) {
   const { t } = useTranslation()
 
   return (
-    <section className="bg-neutral-50 dark:bg-neutral-900/40">
+    <section>
       <div className="mx-auto max-w-6xl px-4 py-14 md:px-6">
         <h2 className="mb-6 font-display text-2xl font-semibold text-neutral-900 dark:text-neutral-100">{t('landing.mediaTeaserTitle')}</h2>
         <Card>

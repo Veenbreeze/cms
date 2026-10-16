@@ -71,6 +71,7 @@
     "notes": "Maelezo",
     "success": "Imefanikiwa",
     "error": "Hitilafu imetokea. Tafadhali jaribu tena.",
+    "retry": "Jaribu tena",
     "unsavedChanges": "Una mabadiliko ambayo hayajahifadhiwa.",
     "comingSoon": "Inakuja hivi karibuni.",
     "image": "Picha",
@@ -107,8 +108,12 @@
     "todaySongs": "Nyimbo za Leo",
     "upcomingEvents": "Matukio Yajayo",
     "recentPhotos": "Picha za Hivi Karibuni",
-    "memberComingSoon": "Dashibodi yako ya mwumini inakuja hivi karibuni.",
-    "memberWelcome": "Karibu kwenye ukurasa wa familia ya kanisa."
+    "memberWelcome": "Karibu kwenye ukurasa wa familia ya kanisa.",
+    "memberNotLinked": "Akaunti yako haijaunganishwa na rekodi ya mwumini. Wasiliana na msimamizi wa kanisa.",
+    "memberSpiritualJourney": "Safari yako ya kiroho",
+    "memberParticipation": "Ushiriki wako kanisani",
+    "memberNoSpiritualRecords": "Hakuna hatua za kiroho zilizorekodiwa bado.",
+    "memberNoParticipationRecords": "Hakuna rekodi za ushiriki zilizowekwa bado."
   },
   "members": {
     "title": "Waumini",
@@ -157,6 +162,30 @@
       "place": "Mahali",
       "minister": "Kasisi / Mtumishi",
       "noRecords": "Hakuna rekodi za kiroho zilizowekwa bado."
+    },
+    "documents": {
+      "noDocuments": "Hakuna nyaraka za uthibitisho zilizopakiwa.",
+      "openDocument": "Fungua nyaraka"
+    },
+    "participation": {
+      "addRecord": "Ongeza rekodi ya ushiriki",
+      "editRecord": "Hariri rekodi ya ushiriki",
+      "activityName": "Jina la shughuli",
+      "category": "Aina ya shughuli",
+      "status": "Hali ya mahudhurio",
+      "noRecords": "Hakuna rekodi za ushiriki zilizowekwa bado.",
+      "deleteConfirm": "Una uhakika unataka kufuta rekodi hii ya ushiriki?",
+      "categories": {
+        "JUMUIA_MEETING": "Mkutano wa Jumuia",
+        "CHURCH_SERVICE": "Ibada ya kanisa",
+        "EVENT": "Tukio la kanisa",
+        "MINISTRY_SERVICE": "Huduma ya kanisa"
+      },
+      "statuses": {
+        "ATTENDED": "Amehudhuriwa",
+        "ABSENT": "Hakuwepo",
+        "EXCUSED": "Alitoa udhuru"
+      }
     }
   },
   "jumuia": {
@@ -257,7 +286,13 @@
     "category": "Aina",
     "noPhotos": "Hakuna picha bado.",
     "deactivateConfirm": "Una uhakika unataka kuondoa picha hii?",
-    "noCaption": "Hakuna maelezo"
+    "noCaption": "Hakuna maelezo",
+    "openPhoto": "Tazama picha",
+    "photoAlt": "Tukio la kanisa {{number}}",
+    "photoViewer": "Kitazamaji cha picha",
+    "closePhoto": "Funga kitazamaji cha picha",
+    "previousPhoto": "Picha iliyotangulia",
+    "nextPhoto": "Picha inayofuata"
   },
   "events": {
     "title": "Matukio",
@@ -312,7 +347,9 @@
     "noUsers": "Hakuna watumiaji waliopatikana.",
     "passwordHint": "Acha wazi kubaki na nenosiri la sasa.",
     "firstName": "Jina la Kwanza",
-    "lastName": "Jina la Ukoo"
+    "lastName": "Jina la Ukoo",
+    "memberRecord": "Rekodi ya mwumini",
+    "memberLinkHint": "Unganisha akaunti hii na rekodi iliyopo ya mwumini ili aweze kujihudumia."
   },
   "audit": {
     "title": "Kumbukumbu za Mfumo",
@@ -334,6 +371,9 @@
     "noSongsYet": "Hakuna nyimbo zilizowekwa kwa leo bado.",
     "noEventsYet": "Hakuna matukio yajayo bado.",
     "noPhotosYet": "Hakuna picha zilizowekwa kwenye picha bado.",
+    "galleryEyebrow": "Matukio kutoka kanisani kwetu",
+    "galleryTitle": "Maisha pamoja",
+    "galleryIntro": "Muhtasari wa ibada, huduma na ushirika katika familia yetu ya kanisa.",
     "footerDescription": "Mahali pa kukua kiimani, kwa ushirika, na kwa huduma.",
     "quickLinks": "Viungo vya Haraka",
     "followUs": "Tufuate",

@@ -6,6 +6,8 @@ import { Button } from '../../components/ui'
 import { ROUTES } from '../../routes/routePaths'
 import { SERVICES } from './data/services'
 
+const FALLBACK_HERO_IMAGE = '/WhatsApp%20Image%202026-09-08%20at%2011.10.34.jpeg'
+
 export default function Hero({ church, backgroundImage }) {
   const { t } = useTranslation()
   const nextService = SERVICES[0]
@@ -14,8 +16,8 @@ export default function Hero({ church, backgroundImage }) {
     {
       key: 'service',
       content: (
-        <Link to={ROUTES.SERVICES} className="flex items-center justify-center gap-2 px-4 py-4 text-sm text-primary-100 hover:text-white">
-          <Calendar className="h-4 w-4 flex-shrink-0" />
+        <Link to={ROUTES.SERVICES} className="flex items-center gap-3 px-4 py-4 text-sm text-neutral-700 transition-colors hover:bg-gold-50 dark:text-neutral-200 dark:hover:bg-neutral-900">
+          <Calendar className="h-4 w-4 flex-shrink-0 text-gold-700 dark:text-gold-300" />
           <span>
             {t(nextService.dayKey)} · {t(nextService.timeKey)}
           </span>
@@ -29,9 +31,9 @@ export default function Hero({ church, backgroundImage }) {
           href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(church.address)}`}
           target="_blank"
           rel="noreferrer"
-          className="flex items-center justify-center gap-2 px-4 py-4 text-sm text-primary-100 hover:text-white"
+          className="flex items-center gap-3 px-4 py-4 text-sm text-neutral-700 transition-colors hover:bg-gold-50 dark:text-neutral-200 dark:hover:bg-neutral-900"
         >
-          <MapPin className="h-4 w-4 flex-shrink-0" />
+          <MapPin className="h-4 w-4 flex-shrink-0 text-gold-700 dark:text-gold-300" />
           <span className="truncate">{church.address}</span>
         </a>
       ),
@@ -39,8 +41,8 @@ export default function Hero({ church, backgroundImage }) {
     church?.phone && {
       key: 'phone',
       content: (
-        <a href={`tel:${church.phone}`} className="flex items-center justify-center gap-2 px-4 py-4 text-sm text-primary-100 hover:text-white">
-          <Phone className="h-4 w-4 flex-shrink-0" />
+        <a href={`tel:${church.phone}`} className="flex items-center gap-3 px-4 py-4 text-sm text-neutral-700 transition-colors hover:bg-gold-50 dark:text-neutral-200 dark:hover:bg-neutral-900">
+          <Phone className="h-4 w-4 flex-shrink-0 text-gold-700 dark:text-gold-300" />
           <span>{church.phone}</span>
         </a>
       ),
@@ -48,39 +50,46 @@ export default function Hero({ church, backgroundImage }) {
   ].filter(Boolean)
 
   return (
-    <section className="relative overflow-hidden">
-      {backgroundImage ? (
-        <>
-          <img src={backgroundImage} alt="" className="absolute inset-0 h-full w-full object-cover" />
-          <div className="absolute inset-0 bg-neutral-950/70" />
-        </>
-      ) : (
-        <div className="absolute inset-0 bg-gradient-to-b from-primary-800 to-primary-950" />
-      )}
-      <div className="relative mx-auto max-w-4xl px-4 pb-12 pt-24 text-center sm:pt-32">
-        <p className="mb-3 text-sm font-medium uppercase tracking-wide text-accent-300">{church?.name}</p>
-        <h1 className="font-display text-4xl font-semibold text-white sm:text-6xl">{t('landing.welcomeMessage')}</h1>
-        <p className="mx-auto mt-4 max-w-xl text-primary-100">{t('landing.heroSubtitle')}</p>
+    <section>
+      <div className="relative isolate min-h-[430px] overflow-hidden bg-neutral-950 sm:min-h-[500px] lg:min-h-[560px]">
+        <img
+          src={backgroundImage || FALLBACK_HERO_IMAGE}
+          alt=""
+          onError={(event) => {
+            if (!event.currentTarget.src.endsWith(FALLBACK_HERO_IMAGE)) event.currentTarget.src = FALLBACK_HERO_IMAGE
+          }}
+          className="absolute inset-0 h-full w-full object-cover object-[center_38%]"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-neutral-950/70 via-neutral-950/35 to-neutral-950/5" />
+        <div className="absolute inset-0 bg-gradient-to-t from-neutral-950/35 via-transparent to-neutral-950/10" />
 
-        <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-          <Button as={Link} to={ROUTES.SERVICES} variant="secondary" size="lg">
-            {t('landing.heroPrimaryCta')}
-          </Button>
-          <Button as={Link} to={ROUTES.ABOUT} variant="outline" size="lg" className="border-white text-white hover:bg-white/10">
-            {t('landing.learnMore')}
-          </Button>
-        </div>
-      </div>
+        <div className="relative mx-auto flex min-h-[430px] max-w-7xl items-center px-4 py-12 sm:min-h-[500px] sm:px-6 sm:py-16 lg:min-h-[560px]">
+          <div className="max-w-2xl">
+            <p className="mb-4 text-sm font-semibold text-gold-200">{church?.name || t('app.name')}</p>
+            <h1 className="max-w-2xl font-display text-4xl font-semibold leading-tight text-white sm:text-5xl lg:text-6xl">
+              {t('landing.welcomeMessage')}
+            </h1>
+            <p className="mt-5 max-w-xl text-base leading-7 text-white/90 sm:text-lg">{t('landing.heroSubtitle')}</p>
 
-      <div className="relative border-t border-white/10 bg-black/20 backdrop-blur-sm">
-        <div className="mx-auto flex max-w-4xl flex-col divide-y divide-white/10 sm:flex-row sm:justify-center sm:divide-x sm:divide-y-0">
-          {infoItems.map((item) => (
-            <div key={item.key} className="flex-1">
-              {item.content}
+            <div className="mt-8 flex flex-wrap gap-3">
+              <Button as={Link} to={ROUTES.SERVICES} variant="secondary" size="lg">
+                {t('landing.heroPrimaryCta')}
+              </Button>
+              <Button as={Link} to={ROUTES.ABOUT} variant="outline" size="lg" className="border-white text-white hover:bg-white/10">
+                {t('landing.learnMore')}
+              </Button>
             </div>
-          ))}
+          </div>
         </div>
       </div>
+
+      {infoItems.length > 0 && (
+        <div className="border-b border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-950">
+          <div className="mx-auto grid max-w-7xl grid-cols-1 divide-y divide-neutral-200 px-4 sm:grid-cols-3 sm:divide-x sm:divide-y-0 sm:px-6 dark:divide-neutral-800">
+            {infoItems.map((item) => <div key={item.key}>{item.content}</div>)}
+          </div>
+        </div>
+      )}
     </section>
   )
 }

@@ -7,7 +7,7 @@ export default function MinistriesSection({ titleId, showIntro = false }) {
   const { t } = useTranslation()
 
   return (
-    <section id={titleId}>
+    <section id={titleId} className="bg-neutral-50 dark:bg-neutral-900/40">
       <div className="mx-auto max-w-6xl px-4 py-14 md:px-6">
         <h2 className="mb-2 font-display text-2xl font-semibold text-neutral-900 dark:text-neutral-100">{t('nav.ministries')}</h2>
         {showIntro && <p className="mb-6 max-w-2xl text-neutral-600 dark:text-neutral-300">{t('ministries.intro')}</p>}

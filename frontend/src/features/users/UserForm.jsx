@@ -5,13 +5,14 @@ import { Button, FormField, Input, Select } from '../../components/ui'
 import { useAuth } from '../../context/AuthContext'
 import { getErrorDetail, getFieldErrors } from '../../services/api/apiError'
 import { listJumuia } from '../../services/api/jumuiaService'
-import { createUser, updateUser } from '../../services/api/userService'
+import { createUser, listAvailableMembers, updateUser } from '../../services/api/userService'
 import { JUMUIA_SCOPED_ROLES, ROLES } from '../../utils/roles'
 
 export default function UserForm({ user: editingUser, onSaved, onCancel }) {
   const { t } = useTranslation()
   const { user: currentUser } = useAuth()
   const [jumuiaOptions, setJumuiaOptions] = useState([])
+  const [memberOptions, setMemberOptions] = useState([])
   const [values, setValues] = useState({
     email: editingUser?.email || '',
     first_name: editingUser?.first_name || '',
@@ -19,6 +20,7 @@ export default function UserForm({ user: editingUser, onSaved, onCancel }) {
     phone: editingUser?.phone || '',
     role: editingUser?.role || ROLES.SECRETARY,
     jumuia: editingUser?.jumuia || '',
+    member: editingUser?.member || '',
     password: '',
   })
   const [errors, setErrors] = useState({})
@@ -27,12 +29,14 @@ export default function UserForm({ user: editingUser, onSaved, onCancel }) {
 
   useEffect(() => {
     listJumuia().then((res) => setJumuiaOptions(res.results))
+    listAvailableMembers().then(setMemberOptions)
   }, [])
 
   const availableRoles = Object.values(ROLES).filter(
     (role) => role !== ROLES.SUPER_ADMIN || currentUser?.role === ROLES.SUPER_ADMIN
   )
   const needsJumuia = JUMUIA_SCOPED_ROLES.includes(values.role)
+  const isMemberAccount = values.role === ROLES.MEMBER
   const setField = (field) => (event) => setValues((current) => ({ ...current, [field]: event.target.value }))
 
   const handleSubmit = async (event) => {
@@ -41,7 +45,11 @@ export default function UserForm({ user: editingUser, onSaved, onCancel }) {
     setFormError('')
     setIsSubmitting(true)
     try {
-      const payload = { ...values, jumuia: needsJumuia ? values.jumuia : null }
+      const payload = {
+        ...values,
+        jumuia: needsJumuia ? values.jumuia : null,
+        member: isMemberAccount ? values.member || null : null,
+      }
       if (editingUser && !payload.password) delete payload.password
       const saved = editingUser ? await updateUser(editingUser.id, payload) : await createUser(payload)
       onSaved(saved)
@@ -89,6 +97,22 @@ export default function UserForm({ user: editingUser, onSaved, onCancel }) {
             {jumuiaOptions.map((jumuia) => (
               <option key={jumuia.id} value={jumuia.id}>
                 {jumuia.name}
+              </option>
+            ))}
+          </Select>
+        </FormField>
+      )}
+
+      {isMemberAccount && (
+        <FormField label={t('users.memberRecord')} htmlFor="member" hint={t('users.memberLinkHint')} error={errors.member}>
+          <Select id="member" value={values.member} onChange={setField('member')}>
+            <option value="">—</option>
+            {editingUser?.member && !memberOptions.some((member) => member.id === editingUser.member) && (
+              <option value={editingUser.member}>{editingUser.member_name}</option>
+            )}
+            {memberOptions.map((member) => (
+              <option key={member.id} value={member.id}>
+                {member.full_name} · {member.member_no} · {member.jumuia_name}
               </option>
             ))}
           </Select>

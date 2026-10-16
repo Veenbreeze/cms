@@ -29,8 +29,9 @@ export default function QuickAccessSection() {
   ]
 
   return (
-    <section className="mx-auto max-w-6xl px-4 py-14 md:px-6">
-      <h2 className="sr-only">{t('landing.quickAccessTitle')}</h2>
+    <section className="bg-neutral-50 dark:bg-neutral-900/40">
+      <div className="mx-auto max-w-7xl px-4 py-12 md:px-6 md:py-14">
+      <h2 className="mb-6 font-display text-2xl font-semibold text-neutral-900 dark:text-neutral-100">{t('landing.quickAccessTitle')}</h2>
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {items.map((item) => (
           <Card
@@ -51,6 +52,7 @@ export default function QuickAccessSection() {
             </span>
           </Card>
         ))}
+      </div>
       </div>
     </section>
   )

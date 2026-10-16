@@ -4,6 +4,10 @@ export function listUsers(params) {
   return axiosClient.get('/users/', { params }).then((res) => res.data)
 }
 
+export function listAvailableMembers() {
+  return axiosClient.get('/users/available-members/').then((res) => res.data)
+}
+
 export function createUser(payload) {
   return axiosClient.post('/users/', payload).then((res) => res.data)
 }

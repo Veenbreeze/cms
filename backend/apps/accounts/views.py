@@ -12,10 +12,17 @@ from rest_framework_simplejwt.exceptions import TokenError
 from rest_framework_simplejwt.tokens import RefreshToken
 
 from apps.core.permissions import IsChurchAdminOrAbove
+from apps.members.models import Member
 
 from .auth_serializers import CustomTokenObtainPairSerializer
 from .models import User
-from .serializers import ChangePasswordSerializer, MeSerializer, UserSerializer, UserWriteSerializer
+from .serializers import (
+    ChangePasswordSerializer,
+    MeSerializer,
+    MemberAccountOptionSerializer,
+    UserSerializer,
+    UserWriteSerializer,
+)
 from .throttles import LoginRateThrottle
 
 REFRESH_COOKIE_PATH = "/api/v1/auth/"
@@ -130,13 +137,18 @@ class UserViewSet(viewsets.ModelViewSet):
     """Staff account management. No self-registration exists anywhere in the
     API — every account is created here by a Super Admin/Church Admin."""
 
-    queryset = User.objects.select_related("jumuia").all()
+    queryset = User.objects.select_related("jumuia", "member").all()
     permission_classes = [IsChurchAdminOrAbove]
 
     def get_serializer_class(self):
         if self.action in ("create", "update", "partial_update"):
             return UserWriteSerializer
         return UserSerializer
+
+    @action(detail=False, methods=["get"], url_path="available-members")
+    def available_members(self, request):
+        members = Member.objects.active().select_related("jumuia").filter(account__isnull=True)
+        return Response(MemberAccountOptionSerializer(members, many=True).data)
 
     def perform_destroy(self, instance):
         # Soft delete via the standard DELETE verb too, not just /deactivate/

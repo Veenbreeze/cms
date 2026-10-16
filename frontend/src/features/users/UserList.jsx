@@ -48,6 +48,7 @@ export default function UserList() {
     { key: 'full_name', header: t('common.name') },
     { key: 'email', header: t('auth.email') },
     { key: 'role', header: t('users.role'), render: (row) => t(`users.roles.${row.role}`) },
+    { key: 'member_name', header: t('users.memberRecord'), render: (row) => row.member_name || '—' },
     { key: 'jumuia_name', header: t('members.jumuia'), render: (row) => row.jumuia_name || '—' },
     {
       key: 'is_active',

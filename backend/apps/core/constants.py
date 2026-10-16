@@ -48,6 +48,19 @@ class MilestoneStatus(models.TextChoices):
     COMPLETED = "COMPLETED", "Completed"
 
 
+class ParticipationCategory(models.TextChoices):
+    JUMUIA_MEETING = "JUMUIA_MEETING", "Jumuia meeting"
+    CHURCH_SERVICE = "CHURCH_SERVICE", "Church service"
+    EVENT = "EVENT", "Event"
+    MINISTRY_SERVICE = "MINISTRY_SERVICE", "Ministry service"
+
+
+class ParticipationStatus(models.TextChoices):
+    ATTENDED = "ATTENDED", "Attended"
+    ABSENT = "ABSENT", "Absent"
+    EXCUSED = "EXCUSED", "Excused"
+
+
 class AuditAction(models.TextChoices):
     CREATE = "CREATE", "Create"
     UPDATE = "UPDATE", "Update"

@@ -4,11 +4,12 @@ A cloud-ready, bilingual (English / Kiswahili) church management platform: a pub
 landing site plus a secure, role-based dashboard for managing members, Jumuia
 (communities), spiritual records, and church content.
 
-> Status: foundation + core modules (auth, RBAC, Jumuia, Members, Spiritual Records,
-> Dashboard, Audit Log, public landing page). Content modules (announcements, weekly
-> lessons, songs/QR, servant history, gallery, events, reports) are scaffolded in the
-> database but not yet built — see `backend/apps/content`, `backend/apps/servants`,
-> `backend/apps/notifications`.
+> Status: operational core modules include authentication/RBAC, Jumuia, member and
+> spiritual-record management, linked-member self-service, participation tracking,
+> dashboard, audit log, announcements, weekly lessons, songs/QR, servant history,
+> gallery, events, notifications, and the public landing pages. A reports/analytics
+> module is not implemented yet. Public leadership and teaching sections need content
+> records to display populated pages.
 
 ## Stack
 

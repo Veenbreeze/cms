@@ -48,6 +48,9 @@ class User(BaseModel, AbstractBaseUser, PermissionsMixin):
     jumuia = models.ForeignKey(
         "jumuia.Jumuia", on_delete=models.SET_NULL, null=True, blank=True, related_name="staff_users"
     )
+    member = models.OneToOneField(
+        "members.Member", on_delete=models.SET_NULL, null=True, blank=True, related_name="account"
+    )
     is_staff = models.BooleanField(default=False, help_text="Required for Django admin access.")
 
     objects = UserManager()

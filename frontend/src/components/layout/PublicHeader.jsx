@@ -10,17 +10,14 @@ import LanguageSwitcher from './LanguageSwitcher'
 import PublicMobileDrawer from './PublicMobileDrawer'
 import PublicNavMenu from './PublicNavMenu'
 import ThemeSwitcher from './ThemeSwitcher'
-import TopUtilityBar from './TopUtilityBar'
 
-export default function PublicHeader({ church }) {
+export default function PublicHeader() {
   const { t } = useTranslation()
   const { isAuthenticated } = useAuth()
   const [menuOpen, setMenuOpen] = useState(false)
 
   return (
     <header className="sticky top-0 z-30 border-b border-neutral-200 bg-white/95 backdrop-blur dark:border-neutral-800 dark:bg-neutral-950/95">
-      <TopUtilityBar church={church} />
-
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 md:px-6">
         <Link to={ROUTES.HOME} className="flex items-center gap-2">
           <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-gold-600 text-white">

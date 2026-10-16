@@ -71,6 +71,7 @@
     "notes": "Notes",
     "success": "Success",
     "error": "Something went wrong. Please try again.",
+    "retry": "Try again",
     "unsavedChanges": "You have unsaved changes.",
     "comingSoon": "Coming soon.",
     "image": "Image",
@@ -107,8 +108,12 @@
     "todaySongs": "Today's Songs",
     "upcomingEvents": "Upcoming Events",
     "recentPhotos": "Recent Gallery Photos",
-    "memberComingSoon": "Your member dashboard is coming soon.",
-    "memberWelcome": "Welcome to the church family portal."
+    "memberWelcome": "Welcome to the church family portal.",
+    "memberNotLinked": "Your login is not linked to a member record. Please contact a church administrator.",
+    "memberSpiritualJourney": "Your spiritual journey",
+    "memberParticipation": "Your church participation",
+    "memberNoSpiritualRecords": "No spiritual milestones have been recorded yet.",
+    "memberNoParticipationRecords": "No participation records have been recorded yet."
   },
   "members": {
     "title": "Members",
@@ -157,6 +162,30 @@
       "place": "Place",
       "minister": "Minister / Servant",
       "noRecords": "No spiritual milestones recorded yet."
+    },
+    "documents": {
+      "noDocuments": "No supporting documents have been uploaded.",
+      "openDocument": "Open document"
+    },
+    "participation": {
+      "addRecord": "Add participation record",
+      "editRecord": "Edit participation record",
+      "activityName": "Activity name",
+      "category": "Activity type",
+      "status": "Attendance status",
+      "noRecords": "No participation records have been recorded yet.",
+      "deleteConfirm": "Delete this participation record?",
+      "categories": {
+        "JUMUIA_MEETING": "Jumuia meeting",
+        "CHURCH_SERVICE": "Church service",
+        "EVENT": "Church event",
+        "MINISTRY_SERVICE": "Ministry service"
+      },
+      "statuses": {
+        "ATTENDED": "Attended",
+        "ABSENT": "Absent",
+        "EXCUSED": "Excused"
+      }
     }
   },
   "jumuia": {
@@ -257,7 +286,13 @@
     "category": "Category",
     "noPhotos": "No photos yet.",
     "deactivateConfirm": "Remove this photo?",
-    "noCaption": "No caption"
+    "noCaption": "No caption",
+    "openPhoto": "View photo",
+    "photoAlt": "Church moment {{number}}",
+    "photoViewer": "Photo viewer",
+    "closePhoto": "Close photo viewer",
+    "previousPhoto": "Previous photo",
+    "nextPhoto": "Next photo"
   },
   "events": {
     "title": "Events",
@@ -312,7 +347,9 @@
     "noUsers": "No users found.",
     "passwordHint": "Leave blank to keep the current password.",
     "firstName": "First Name",
-    "lastName": "Last Name"
+    "lastName": "Last Name",
+    "memberRecord": "Member record",
+    "memberLinkHint": "Link this login to an existing member for self-service access."
   },
   "audit": {
     "title": "Audit Logs",
@@ -334,6 +371,9 @@
     "noSongsYet": "No songs have been posted for today yet.",
     "noEventsYet": "No upcoming events yet.",
     "noPhotosYet": "No photos have been added to the gallery yet.",
+    "galleryEyebrow": "Moments from our church",
+    "galleryTitle": "Life together",
+    "galleryIntro": "A glimpse of worship, service, and fellowship across our church family.",
     "footerDescription": "A place to grow in faith, fellowship, and service.",
     "quickLinks": "Quick Links",
     "followUs": "Follow Us",

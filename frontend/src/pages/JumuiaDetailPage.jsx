@@ -6,23 +6,52 @@ import { Link, useParams } from 'react-router-dom'
 import { Button, Card, CardBody, Spinner } from '../components/ui'
 import StatsCard from '../features/dashboard/StatsCard'
 import { getJumuia, getJumuiaStats } from '../services/api/jumuiaService'
+import { getErrorDetail } from '../services/api/apiError'
 import { ROUTES } from '../routes/routePaths'
 
 export default function JumuiaDetailPage() {
   const { t } = useTranslation()
   const { id } = useParams()
-  const [jumuia, setJumuia] = useState(null)
-  const [stats, setStats] = useState(null)
+  const [requestResult, setRequestResult] = useState(null)
+  const [retryCount, setRetryCount] = useState(0)
+  const requestKey = `${id}:${retryCount}`
 
   useEffect(() => {
-    getJumuia(id).then(setJumuia)
-    getJumuiaStats(id).then(setStats)
-  }, [id])
+    let isCurrent = true
 
-  if (!jumuia) {
+    Promise.all([getJumuia(id), getJumuiaStats(id).catch(() => null)])
+      .then(([jumuiaData, statsData]) => {
+        if (!isCurrent) return
+        setRequestResult({ requestKey, jumuia: jumuiaData, stats: statsData, error: null })
+      })
+      .catch((error) => {
+        if (isCurrent) setRequestResult({ requestKey, jumuia: null, stats: null, error })
+      })
+
+    return () => {
+      isCurrent = false
+    }
+  }, [id, requestKey])
+
+  const currentResult = requestResult?.requestKey === requestKey ? requestResult : null
+  const jumuia = currentResult?.jumuia
+  const stats = currentResult?.stats
+
+  if (!currentResult) {
     return (
       <div className="flex justify-center py-16">
         <Spinner size={28} />
+      </div>
+    )
+  }
+
+  if (currentResult.error) {
+    return (
+      <div className="flex flex-col items-center gap-4 py-16 text-center">
+        <p className="text-sm text-danger">{getErrorDetail(currentResult.error, t('common.error'))}</p>
+        <Button variant="outline" onClick={() => setRetryCount((count) => count + 1)}>
+          {t('common.retry')}
+        </Button>
       </div>
     )
   }
