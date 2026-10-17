@@ -65,6 +65,9 @@ export default function ServicesSection({ variant = 'full' }) {
               </div>
             ))}
           </div>
+          <p className="border-t border-neutral-100 px-5 py-4 text-sm text-neutral-500 dark:border-neutral-800 dark:text-neutral-400">
+            {t('services.specialSundayServiceNote')}
+          </p>
         </Card>
       </div>
     </section>

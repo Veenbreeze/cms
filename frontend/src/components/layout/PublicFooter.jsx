@@ -29,24 +29,24 @@ export default function PublicFooter({ church }) {
   ].filter(Boolean)
 
   return (
-    <footer id="contact" className="bg-gold-900 text-gold-100">
+    <footer id="contact" className="bg-primary-950 text-neutral-100">
       <div className="mx-auto grid max-w-7xl grid-cols-1 gap-8 px-4 py-12 sm:grid-cols-2 md:px-6 lg:grid-cols-4">
         <div>
           <div className="flex items-center gap-2">
-            <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-gold-600 text-white">
+            <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary-700 text-white">
               <Church className="h-5 w-5" />
             </span>
             <span className="font-display text-lg font-semibold text-white">{church?.name || t('app.name')}</span>
           </div>
-          <p className="mt-3 max-w-xs text-sm text-gold-200">{church?.description || t('landing.footerDescription')}</p>
+          <p className="mt-3 max-w-xs text-sm text-neutral-300">{church?.description || t('landing.footerDescription')}</p>
         </div>
 
         <div>
-          <h3 className="text-sm font-semibold uppercase tracking-wide text-gold-300">{t('landing.quickLinks')}</h3>
+          <h3 className="text-sm font-semibold uppercase tracking-wide text-accent-300">{t('landing.quickLinks')}</h3>
           <ul className="mt-3 space-y-2">
             {EXPLORE_LINKS.map((link) => (
               <li key={link.to}>
-                <Link to={link.to} className="text-sm text-gold-100 hover:text-white">
+                <Link to={link.to} className="text-sm text-neutral-200 hover:text-white">
                   {t(link.labelKey)}
                 </Link>
               </li>
@@ -55,17 +55,17 @@ export default function PublicFooter({ church }) {
         </div>
 
         <div>
-          <h3 className="text-sm font-semibold uppercase tracking-wide text-gold-300">{t('nav.contact')}</h3>
+          <h3 className="text-sm font-semibold uppercase tracking-wide text-accent-300">{t('nav.contact')}</h3>
           <ul className="mt-3 space-y-2">
             {CONNECT_LINKS.map((link) => (
               <li key={link.to}>
-                <Link to={link.to} className="text-sm text-gold-100 hover:text-white">
+                <Link to={link.to} className="text-sm text-neutral-200 hover:text-white">
                   {t(link.labelKey)}
                 </Link>
               </li>
             ))}
           </ul>
-          <ul className="mt-3 space-y-2 border-t border-gold-800 pt-3 text-sm text-gold-100">
+          <ul className="mt-3 space-y-2 border-t border-primary-800 pt-3 text-sm text-neutral-200">
             {church?.address && (
               <li className="flex items-start gap-2">
                 <MapPin className="mt-0.5 h-4 w-4 flex-shrink-0" />
@@ -89,10 +89,22 @@ export default function PublicFooter({ church }) {
               </li>
             )}
           </ul>
+          {church?.address && (
+            <div className="mt-4">
+              <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-accent-300">{t('contact.mapTitle')}</p>
+              <iframe
+                title={t('contact.mapTitle')}
+                src={`https://maps.google.com/maps?q=${encodeURIComponent(church.address)}&output=embed`}
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                className="h-28 w-full rounded-lg border border-primary-800 bg-primary-900"
+              />
+            </div>
+          )}
         </div>
 
         <div>
-          <h3 className="text-sm font-semibold uppercase tracking-wide text-gold-300">{t('landing.followUs')}</h3>
+          <h3 className="text-sm font-semibold uppercase tracking-wide text-accent-300">{t('landing.followUs')}</h3>
           {socialLinks.length > 0 ? (
             <div className="mt-3 flex gap-3">
               {socialLinks.map(({ href, Icon, label }) => (
@@ -102,20 +114,25 @@ export default function PublicFooter({ church }) {
                   target="_blank"
                   rel="noreferrer"
                   aria-label={label}
-                  className="flex h-9 w-9 items-center justify-center rounded-full bg-gold-800 text-gold-100 hover:bg-gold-700 hover:text-white"
+                  className="flex h-9 w-9 items-center justify-center rounded-full bg-teal-800 text-teal-100 transition-colors hover:bg-teal-700 hover:text-white"
                 >
                   <Icon className="h-4 w-4" />
                 </a>
               ))}
             </div>
           ) : (
-            <p className="mt-3 text-sm text-gold-300">{t('common.comingSoon')}</p>
+            <p className="mt-3 text-sm text-accent-300">{t('common.comingSoon')}</p>
+          )}
+          {church?.youtube_channel_name && (
+            <p className="mt-3 text-sm text-neutral-300">
+              <span className="font-medium">{t('contact.youtubeChannelLabel')}:</span> {church.youtube_channel_name}
+            </p>
           )}
         </div>
       </div>
 
-      <div className="border-t border-gold-800 px-4 py-4 md:px-6">
-        <div className="mx-auto max-w-7xl text-center text-xs text-gold-300">
+      <div className="border-t border-primary-800 px-4 py-4 md:px-6">
+        <div className="mx-auto max-w-7xl text-center text-xs text-neutral-400">
           <p>
             &copy; {new Date().getFullYear()} {church?.name || t('app.name')}. {t('landing.copyright')}
           </p>

@@ -10,7 +10,7 @@ export default function ContactPage() {
   const { t } = useTranslation()
   const { church } = useOutletContext()
 
-  const hasContactInfo = Boolean(church?.address || church?.phone || church?.email)
+  const hasContactInfo = Boolean(church?.address || church?.phone || church?.email || church?.instagram_url || church?.youtube_channel_name)
   const givingNumbers = [
     church?.giving_number_1 && { number: church.giving_number_1, label: church.giving_number_1_label },
     church?.giving_number_2 && { number: church.giving_number_2, label: church.giving_number_2_label },
@@ -82,7 +82,7 @@ export default function ContactPage() {
                     </div>
                   </div>
                 )}
-                {socialLinks.length > 0 && (
+                {(socialLinks.length > 0 || church?.youtube_channel_name) && (
                   <div>
                     <p className="mb-2 text-xs font-medium uppercase tracking-wide text-neutral-500 dark:text-neutral-400">
                       {t('contact.followUsTitle')}
@@ -101,6 +101,11 @@ export default function ContactPage() {
                         </a>
                       ))}
                     </div>
+                    {church?.youtube_channel_name && (
+                      <p className="mt-3 text-sm text-neutral-600 dark:text-neutral-300">
+                        <span className="font-medium">{t('contact.youtubeChannelLabel')}:</span> {church.youtube_channel_name}
+                      </p>
+                    )}
                   </div>
                 )}
               </>

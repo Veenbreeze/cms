@@ -7,10 +7,46 @@ from .models import (
     Event,
     GalleryCategory,
     GalleryImage,
+    PrayerRequest,
     QRCodeRecord,
     Song,
     WeeklyLesson,
 )
+
+
+class PublicPrayerRequestSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = PrayerRequest
+        fields = ["id", "name", "email", "message", "created_at"]
+        read_only_fields = ["id", "created_at"]
+
+    def create(self, validated_data):
+        request = self.context.get("request")
+        if request and request.user.is_authenticated:
+            validated_data["submitted_by"] = request.user
+        return super().create(validated_data)
+
+
+class MemberPrayerRequestSerializer(serializers.ModelSerializer):
+    status_display = serializers.CharField(source="get_status_display", read_only=True)
+
+    class Meta:
+        model = PrayerRequest
+        fields = ["id", "message", "status", "status_display", "created_at"]
+        read_only_fields = fields
+
+
+class AdminPrayerRequestSerializer(serializers.ModelSerializer):
+    status_display = serializers.CharField(source="get_status_display", read_only=True)
+    submitted_by_name = serializers.CharField(source="submitted_by.get_full_name", read_only=True, default=None)
+
+    class Meta:
+        model = PrayerRequest
+        fields = [
+            "id", "name", "email", "message", "submitted_by_name", "status", "status_display",
+            "is_confidential", "internal_notes", "created_at",
+        ]
+        read_only_fields = ["id", "name", "email", "message", "submitted_by_name", "is_confidential", "created_at"]
 
 
 class AnnouncementSerializer(serializers.ModelSerializer):

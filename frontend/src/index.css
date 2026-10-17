@@ -15,66 +15,66 @@
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
   --font-display: "Fraunces", ui-serif, Georgia, serif;
 
-  /* Primary: institutional navy blue (sourced from aru.ac.tz's live stylesheet: #225294 / #002f51) */
-  --color-primary-50: #eef4fa;
-  --color-primary-100: #d6e3f2;
-  --color-primary-200: #aecbe6;
-  --color-primary-300: #7ba3d3;
-  --color-primary-400: #4a7ebd;
-  --color-primary-500: #2c6bb0;
-  --color-primary-600: #225294;
-  --color-primary-700: #1c4275;
-  --color-primary-800: #163459;
-  --color-primary-900: #002f51;
-  --color-primary-950: #001d33;
+  /* Primary: Ultra Violet */
+  --color-primary-50: #f7f4fb;
+  --color-primary-100: #eee8f6;
+  --color-primary-200: #dcd0ec;
+  --color-primary-300: #c0aad9;
+  --color-primary-400: #a080c1;
+  --color-primary-500: #7e5fa6;
+  --color-primary-600: #5f4b8b;
+  --color-primary-700: #4b3a70;
+  --color-primary-800: #382c55;
+  --color-primary-900: #281f3d;
+  --color-primary-950: #181226;
 
-  /* Accent: burnt orange (sourced from aru.ac.tz's live stylesheet: #d55e1c) */
-  --color-accent-50: #fdf3ec;
-  --color-accent-100: #fae2d1;
-  --color-accent-200: #f3c6a8;
-  --color-accent-300: #eaa377;
-  --color-accent-400: #e07f4a;
-  --color-accent-500: #d55e1c;
-  --color-accent-600: #b34a12;
-  --color-accent-700: #8f3a0e;
-  --color-accent-800: #6b2b0b;
-  --color-accent-900: #4a1e08;
+  /* Accent: Soft Apricot */
+  --color-accent-50: #fff8f2;
+  --color-accent-100: #fdebdc;
+  --color-accent-200: #f8d7c0;
+  --color-accent-300: #f6d0b5;
+  --color-accent-400: #f4bd99;
+  --color-accent-500: #f0a87b;
+  --color-accent-600: #d89267;
+  --color-accent-700: #b86f49;
+  --color-accent-800: #8d5137;
+  --color-accent-900: #603824;
 
-  /* Gold: used for the public site header and footer */
-  --color-gold-50: #fdf9ec;
-  --color-gold-100: #faf0cd;
-  --color-gold-200: #f5e29d;
-  --color-gold-300: #edcd68;
-  --color-gold-400: #e0b83f;
-  --color-gold-500: #d4af37;
-  --color-gold-600: #b8860b;
-  --color-gold-700: #916b09;
-  --color-gold-800: #6b4f07;
-  --color-gold-900: #4a3705;
-  --color-gold-950: #2e2103;
+  /* Supporting color: quiet teal for information and secondary highlights */
+  --color-teal-50: #f0f8f7;
+  --color-teal-100: #dcefed;
+  --color-teal-200: #bddedb;
+  --color-teal-300: #8fc3bf;
+  --color-teal-400: #5ea39f;
+  --color-teal-500: #438a87;
+  --color-teal-600: #377e7b;
+  --color-teal-700: #2f6664;
+  --color-teal-800: #28504f;
+  --color-teal-900: #203c3b;
+  --color-teal-950: #142827;
 
-  /* Neutral: warm cream/slate rather than cool gray */
+  /* Cool violet-tinted neutrals keep large surfaces calm and readable. */
   --color-neutral-0: #ffffff;
-  --color-neutral-50: #faf7f2;
-  --color-neutral-100: #f2ece1;
-  --color-neutral-200: #e4ddd0;
-  --color-neutral-300: #cfc6b8;
-  --color-neutral-400: #a79e90;
-  --color-neutral-500: #857c6f;
-  --color-neutral-600: #635c52;
-  --color-neutral-700: #47423b;
-  --color-neutral-800: #2e2b26;
-  --color-neutral-900: #1c1a17;
-  --color-neutral-950: #121110;
+  --color-neutral-50: #faf9fc;
+  --color-neutral-100: #f3f0f7;
+  --color-neutral-200: #e7e2ed;
+  --color-neutral-300: #d4ccdc;
+  --color-neutral-400: #aaa1b3;
+  --color-neutral-500: #82798b;
+  --color-neutral-600: #625b69;
+  --color-neutral-700: #48424e;
+  --color-neutral-800: #302b36;
+  --color-neutral-900: #1e1a23;
+  --color-neutral-950: #110f14;
 
-  --color-success: #4c7a50;
+  --color-success: #39765e;
   --color-warning: #d97706;
   --color-danger: #b3261e;
-  --color-info: #2563a8;
+  --color-info: #377e7b;
 
-  --shadow-warm-sm: 0 1px 2px 0 rgb(0 47 81 / 0.06);
-  --shadow-warm-md: 0 4px 10px -2px rgb(0 47 81 / 0.10), 0 2px 4px -2px rgb(0 47 81 / 0.06);
-  --shadow-warm-lg: 0 12px 24px -6px rgb(0 47 81 / 0.14), 0 4px 8px -4px rgb(0 47 81 / 0.08);
+  --shadow-warm-sm: 0 1px 2px 0 rgb(95 75 139 / 0.06);
+  --shadow-warm-md: 0 4px 10px -2px rgb(95 75 139 / 0.10), 0 2px 4px -2px rgb(95 75 139 / 0.06);
+  --shadow-warm-lg: 0 12px 24px -6px rgb(95 75 139 / 0.14), 0 4px 8px -4px rgb(95 75 139 / 0.08);
 }
 
 @keyframes fadeIn {

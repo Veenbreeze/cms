@@ -7,6 +7,7 @@ export const ROUTES = {
   LEADERSHIP: '/leadership',
   CONTACT: '/contact',
   PRAYER_REQUEST: '/prayer-request',
+  PRAYER_REQUESTS: '/prayer-requests',
   FAQ: '/faq',
   LOGIN: '/login',
   DASHBOARD: '/dashboard',

@@ -24,6 +24,7 @@ import MinistriesPage from '../pages/MinistriesPage'
 import NotFoundPage from '../pages/NotFoundPage'
 import NotificationsPage from '../pages/NotificationsPage'
 import PrayerRequestPage from '../pages/PrayerRequestPage'
+import PrayerRequestsPage from '../pages/PrayerRequestsPage'
 import ServantHistoryPage from '../pages/ServantHistoryPage'
 import ServicesPage from '../pages/ServicesPage'
 import SettingsPage from '../pages/SettingsPage'
@@ -76,6 +77,7 @@ export default function AppRoutes() {
           <Route element={<RoleRoute allowedRoles={ADMIN_ROLES} />}>
             <Route path={ROUTES.USERS} element={<UsersPage />} />
             <Route path={ROUTES.AUDIT_LOGS} element={<AuditLogsPage />} />
+            <Route path={ROUTES.PRAYER_REQUESTS} element={<PrayerRequestsPage />} />
             <Route path={ROUTES.SETTINGS} element={<SettingsPage />} />
           </Route>
         </Route>

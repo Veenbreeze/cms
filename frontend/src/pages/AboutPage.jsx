@@ -45,11 +45,7 @@ export default function AboutPage() {
 
       <section id="history" className="mx-auto max-w-3xl px-4 py-14 md:px-6">
         <h2 className="mb-4 font-display text-2xl font-semibold text-neutral-900 dark:text-neutral-100">{t('about.historyTitle')}</h2>
-        <div className="space-y-4 text-neutral-600 dark:text-neutral-300">
-          {[1, 2, 3, 4, 5, 6, 7].map((index) => (
-            <p key={index}>{t(`about.historyParagraph${index}`)}</p>
-          ))}
-        </div>
+        <p className="text-neutral-600 dark:text-neutral-300">{t('about.historyNotProvided')}</p>
       </section>
 
       <section className="bg-neutral-50 dark:bg-neutral-900/40">

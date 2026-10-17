@@ -17,33 +17,37 @@ export default function PublicHeader() {
   const [menuOpen, setMenuOpen] = useState(false)
 
   return (
-    <header className="sticky top-0 z-30 border-b border-neutral-200 bg-white/95 backdrop-blur dark:border-neutral-800 dark:bg-neutral-950/95">
-      <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 md:px-6">
-        <Link to={ROUTES.HOME} className="flex items-center gap-2">
-          <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-gold-600 text-white">
+    <header className="sticky top-0 z-30 border-t-2 border-t-primary-600 border-b border-neutral-200 bg-white/95 shadow-[var(--shadow-warm-sm)] backdrop-blur-md dark:border-b-neutral-800 dark:bg-neutral-950/95">
+      <div className="mx-auto flex h-[74px] max-w-[1440px] items-center justify-between gap-3 px-4 md:px-6 xl:gap-5">
+        <Link to={ROUTES.HOME} className="flex min-w-0 shrink-0 items-center gap-2.5">
+          <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-primary-600 text-white shadow-sm">
             <Church className="h-5 w-5" />
           </span>
-          <span className="font-display text-lg font-semibold text-neutral-900 dark:text-neutral-100">
+          <span className="max-w-[8.5rem] truncate font-display text-sm font-semibold text-neutral-900 sm:max-w-[11rem] sm:text-lg dark:text-neutral-100">
             {t('app.name')}
           </span>
         </Link>
 
         <PublicNavMenu />
 
-        <div className="flex items-center gap-1.5 sm:gap-2">
+        <div className="flex shrink-0 items-center gap-1 sm:gap-1.5">
           <LanguageSwitcher />
           <ThemeSwitcher />
-          <Button as={Link} to={ROUTES.PRAYER_REQUEST} variant="secondary" size="sm" className="hidden sm:inline-flex">
-            <HandHeart className="h-4 w-4" />
-            {t('nav.prayerRequest')}
-          </Button>
-          <Button as={Link} to={isAuthenticated ? ROUTES.DASHBOARD : ROUTES.LOGIN} size="sm" className="hidden sm:inline-flex">
-            {isAuthenticated ? t('nav.dashboard') : t('nav.login')}
-          </Button>
+          <div className="hidden 2xl:block">
+            <Button as={Link} to={ROUTES.PRAYER_REQUEST} variant="secondary" size="sm">
+              <HandHeart className="h-4 w-4" />
+              {t('nav.prayerRequest')}
+            </Button>
+          </div>
+          <div className="hidden xl:block">
+            <Button as={Link} to={isAuthenticated ? ROUTES.DASHBOARD : ROUTES.LOGIN} size="sm">
+              {isAuthenticated ? t('nav.dashboard') : t('nav.login')}
+            </Button>
+          </div>
           <button
             onClick={() => setMenuOpen(true)}
             aria-label="Toggle menu"
-            className="flex h-9 w-9 items-center justify-center rounded-lg text-neutral-600 hover:bg-neutral-100 dark:text-neutral-300 dark:hover:bg-neutral-800 lg:hidden"
+            className="flex h-10 w-10 items-center justify-center rounded-xl text-neutral-700 transition-colors hover:bg-accent-50 hover:text-primary-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-600 xl:hidden dark:text-neutral-200 dark:hover:bg-primary-900/40 dark:hover:text-accent-200"
           >
             <Menu className="h-5 w-5" />
           </button>

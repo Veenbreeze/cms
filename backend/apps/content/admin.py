@@ -7,6 +7,7 @@ from .models import (
     Event,
     GalleryCategory,
     GalleryImage,
+    PrayerRequest,
     QRCodeRecord,
     Song,
     WeeklyLesson,
@@ -64,3 +65,11 @@ class EventAdmin(admin.ModelAdmin):
     list_display = ("title", "start_datetime", "location", "category")
     list_filter = ("category",)
     search_fields = ("title",)
+
+
+@admin.register(PrayerRequest)
+class PrayerRequestAdmin(admin.ModelAdmin):
+    list_display = ("name", "email", "status", "is_confidential", "created_at")
+    list_filter = ("status", "is_confidential", "created_at")
+    search_fields = ("name", "email", "message")
+    readonly_fields = ("name", "email", "message", "submitted_by", "created_at")

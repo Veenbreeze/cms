@@ -29,7 +29,7 @@ export default function PublicNavMenu() {
 
   return (
     <nav
-      className="hidden items-center gap-1 lg:flex"
+      className="hidden items-center gap-0.5 xl:flex"
       onKeyDown={(event) => {
         if (event.key === 'Escape') setOpenKey(null)
       }}
@@ -37,7 +37,7 @@ export default function PublicNavMenu() {
       {PUBLIC_NAV_ITEMS.map((item) => {
         const hasChildren = Boolean(item.children?.length)
         const linkClasses =
-          'flex items-center gap-1 rounded-lg px-3 py-2 text-sm font-medium text-neutral-700 hover:bg-gold-50 hover:text-gold-800 dark:text-neutral-200 dark:hover:bg-gold-900/40 dark:hover:text-gold-300'
+          'flex items-center gap-1 rounded-lg px-2.5 py-2 text-[13px] font-medium text-neutral-700 transition-colors hover:bg-accent-50 hover:text-primary-800 dark:text-neutral-200 dark:hover:bg-primary-900/40 dark:hover:text-accent-200'
 
         return (
           <div
@@ -72,7 +72,7 @@ export default function PublicNavMenu() {
             {hasChildren && (
               <div
                 className={cn(
-                  'absolute left-0 top-full z-40 mt-1 w-56 rounded-xl border border-neutral-200 border-t-2 border-t-gold-600 bg-white p-2 shadow-[var(--shadow-warm-md)] transition-opacity dark:border-neutral-800 dark:border-t-gold-500 dark:bg-neutral-900',
+                  'absolute left-0 top-full z-40 mt-1 w-56 rounded-xl border border-neutral-200 border-t-2 border-t-primary-600 bg-white p-2 shadow-[var(--shadow-warm-md)] transition-opacity dark:border-neutral-800 dark:border-t-primary-400 dark:bg-neutral-900',
                   openKey === item.key ? 'visible opacity-100' : 'invisible opacity-0'
                 )}
               >
@@ -80,7 +80,7 @@ export default function PublicNavMenu() {
                   <Link
                     key={child.to}
                     to={child.to}
-                    className="block rounded-lg px-3 py-2 text-sm text-neutral-700 hover:bg-gold-50 hover:text-gold-800 dark:text-neutral-200 dark:hover:bg-gold-900/40 dark:hover:text-gold-300"
+                    className="block rounded-lg px-3 py-2 text-sm text-neutral-700 hover:bg-accent-50 hover:text-primary-800 dark:text-neutral-200 dark:hover:bg-primary-900/40 dark:hover:text-accent-200"
                   >
                     {t(child.labelKey)}
                   </Link>

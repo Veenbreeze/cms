@@ -18,7 +18,7 @@ export default function PublicMobileDrawer({ open, onClose }) {
   if (!open) return null
 
   return createPortal(
-    <div className="fixed inset-0 z-40 lg:hidden">
+    <div className="fixed inset-0 z-40 xl:hidden">
       <div className="absolute inset-0 bg-neutral-900/50" onClick={onClose} aria-hidden="true" />
       <div className="absolute inset-y-0 right-0 w-80 max-w-[85vw] overflow-y-auto bg-white shadow-[var(--shadow-warm-lg)] dark:bg-neutral-900">
         <div className="flex items-center justify-between border-b border-neutral-200 px-4 py-3 dark:border-neutral-800">
@@ -41,7 +41,7 @@ export default function PublicMobileDrawer({ open, onClose }) {
                   key={item.key}
                   to={item.to}
                   onClick={onClose}
-                  className="rounded-lg px-3 py-2.5 text-sm font-medium text-neutral-700 hover:bg-gold-50 hover:text-gold-800 dark:text-neutral-200 dark:hover:bg-gold-900/40 dark:hover:text-gold-300"
+                  className="rounded-lg px-3 py-2.5 text-sm font-medium text-neutral-700 hover:bg-accent-50 hover:text-primary-800 dark:text-neutral-200 dark:hover:bg-primary-900/40 dark:hover:text-accent-200"
                 >
                   {t(item.labelKey)}
                 </Link>
@@ -55,13 +55,13 @@ export default function PublicMobileDrawer({ open, onClose }) {
                   type="button"
                   onClick={() => setExpandedKey(expanded ? null : item.key)}
                   aria-expanded={expanded}
-                  className="flex w-full items-center justify-between rounded-lg px-3 py-2.5 text-sm font-medium text-neutral-700 hover:bg-gold-50 hover:text-gold-800 dark:text-neutral-200 dark:hover:bg-gold-900/40 dark:hover:text-gold-300"
+                  className="flex w-full items-center justify-between rounded-lg px-3 py-2.5 text-sm font-medium text-neutral-700 hover:bg-accent-50 hover:text-primary-800 dark:text-neutral-200 dark:hover:bg-primary-900/40 dark:hover:text-accent-200"
                 >
                   {t(item.labelKey)}
                   <ChevronDown className={cn('h-4 w-4 transition-transform', expanded && 'rotate-180')} />
                 </button>
                 {expanded && (
-                  <div className="ml-3 flex flex-col gap-1 border-l-2 border-gold-600 pl-3 dark:border-gold-500">
+                  <div className="ml-3 flex flex-col gap-1 border-l-2 border-primary-600 pl-3 dark:border-primary-400">
                     {item.children.map((child) => (
                       <Link
                         key={child.to}

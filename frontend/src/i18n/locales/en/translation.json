@@ -37,7 +37,8 @@
     "leadership": "Leadership",
     "newsEvents": "News & Events",
     "faq": "FAQ",
-    "prayerRequest": "Prayer Request"
+    "prayerRequest": "Prayer Request",
+    "prayerRequests": "Prayer Requests"
   },
   "common": {
     "save": "Save",
@@ -59,6 +60,8 @@
     "inactive": "Inactive",
     "required": "This field is required.",
     "viewAll": "View all",
+    "all": "All",
+    "review": "Review",
     "confirm": "Confirm",
     "male": "Male",
     "female": "Female",
@@ -361,7 +364,7 @@
     "noLogs": "No activity recorded yet."
   },
   "landing": {
-    "welcomeMessage": "Karibu katika familia yetu ya Kanisa.",
+    "welcomeMessage": "Welcome to our church family.",
     "heroSubtitle": "A warm welcome to everyone: members, visitors, and friends.",
     "viewAnnouncements": "View Announcements",
     "weeklyLesson": "Weekly Lesson",
@@ -491,6 +494,7 @@
     "getDirections": "Get Directions",
     "followUsTitle": "Follow Us",
     "noContactInfoYet": "Contact details have not been published yet.",
+    "mapTitle": "Find the church",
     "givingTitle": "Give / Lipa Namba",
     "givingNumber1": "Giving Number 1",
     "givingNumber1Label": "Giving Number 1 Description",
@@ -504,10 +508,27 @@
     "emailLabel": "Your Email",
     "requestLabel": "Prayer Request",
     "requestPlaceholder": "Share your prayer request here...",
-    "confidentialNote": "Your request is sent directly and privately to our pastoral team by email.",
+    "confidentialNote": "Your request is private. Only authorized church administrators can view it.",
     "submit": "Send Prayer Request",
-    "missingEmailTitle": "Prayer Requests Not Available Online Yet",
-    "missingEmailBody": "We're unable to send prayer requests online right now. Please contact the church office directly."
+    "eyebrow": "A private note to our prayer team",
+    "submitted": "Your request was sent privately to the church team.",
+    "myRequests": "My prayer requests",
+    "noRequests": "You haven't sent a prayer request yet.",
+    "adminEyebrow": "Pastoral care",
+    "inboxTitle": "Prayer requests",
+    "requester": "Requester",
+    "status": "Status",
+    "internalNotes": "Private staff notes",
+    "confidential": "Confidential",
+    "reviewTitle": "Review prayer request",
+    "filterStatus": "Filter by status",
+    "noInboxRequests": "No prayer requests match this filter.",
+    "statuses": {
+      "NEW": "New",
+      "PRAYING": "In prayer",
+      "ANSWERED": "Answered",
+      "CLOSED": "Closed"
+    }
   },
   "faq": {
     "heroTitle": "Frequently Asked Questions",

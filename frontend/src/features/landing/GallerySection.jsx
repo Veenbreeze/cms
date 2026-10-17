@@ -40,7 +40,7 @@ export default function GallerySection({ photos }) {
       <div className="mx-auto max-w-7xl px-4 py-16 md:px-6 md:py-20">
         <div className="mb-8 flex flex-col gap-4 border-b border-neutral-200 pb-6 dark:border-neutral-800 sm:flex-row sm:items-end sm:justify-between">
           <div>
-            <p className="mb-2 text-sm font-semibold text-gold-700 dark:text-gold-300">{t('landing.galleryEyebrow')}</p>
+            <p className="mb-2 text-sm font-semibold text-primary-700 dark:text-primary-300">{t('landing.galleryEyebrow')}</p>
             <h2 className="font-display text-3xl font-semibold text-neutral-900 dark:text-neutral-100 sm:text-4xl">
               {t('landing.galleryTitle')}
             </h2>
@@ -56,7 +56,7 @@ export default function GallerySection({ photos }) {
                 type="button"
                 onClick={() => setActiveIndex(index)}
                 aria-label={`${t('gallery.openPhoto')} ${index + 1}`}
-                className={`group relative min-h-0 overflow-hidden rounded-md bg-neutral-200 text-left focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold-600 dark:bg-neutral-800 ${TILE_LAYOUTS[index] || 'col-span-1 row-span-1'}`}
+                className={`group relative min-h-0 overflow-hidden rounded-md bg-neutral-200 text-left focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-600 dark:bg-neutral-800 ${TILE_LAYOUTS[index] || 'col-span-1 row-span-1'}`}
               >
                 <img
                   src={photo.image}

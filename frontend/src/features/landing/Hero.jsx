@@ -16,8 +16,8 @@ export default function Hero({ church, backgroundImage }) {
     {
       key: 'service',
       content: (
-        <Link to={ROUTES.SERVICES} className="flex items-center gap-3 px-4 py-4 text-sm text-neutral-700 transition-colors hover:bg-gold-50 dark:text-neutral-200 dark:hover:bg-neutral-900">
-          <Calendar className="h-4 w-4 flex-shrink-0 text-gold-700 dark:text-gold-300" />
+        <Link to={ROUTES.SERVICES} className="flex items-center gap-3 px-4 py-4 text-sm text-neutral-700 transition-colors hover:bg-accent-50 dark:text-neutral-200 dark:hover:bg-neutral-900">
+          <Calendar className="h-4 w-4 flex-shrink-0 text-teal-700 dark:text-teal-300" />
           <span>
             {t(nextService.dayKey)} · {t(nextService.timeKey)}
           </span>
@@ -31,9 +31,9 @@ export default function Hero({ church, backgroundImage }) {
           href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(church.address)}`}
           target="_blank"
           rel="noreferrer"
-          className="flex items-center gap-3 px-4 py-4 text-sm text-neutral-700 transition-colors hover:bg-gold-50 dark:text-neutral-200 dark:hover:bg-neutral-900"
+          className="flex items-center gap-3 px-4 py-4 text-sm text-neutral-700 transition-colors hover:bg-accent-50 dark:text-neutral-200 dark:hover:bg-neutral-900"
         >
-          <MapPin className="h-4 w-4 flex-shrink-0 text-gold-700 dark:text-gold-300" />
+          <MapPin className="h-4 w-4 flex-shrink-0 text-teal-700 dark:text-teal-300" />
           <span className="truncate">{church.address}</span>
         </a>
       ),
@@ -41,8 +41,8 @@ export default function Hero({ church, backgroundImage }) {
     church?.phone && {
       key: 'phone',
       content: (
-        <a href={`tel:${church.phone}`} className="flex items-center gap-3 px-4 py-4 text-sm text-neutral-700 transition-colors hover:bg-gold-50 dark:text-neutral-200 dark:hover:bg-neutral-900">
-          <Phone className="h-4 w-4 flex-shrink-0 text-gold-700 dark:text-gold-300" />
+        <a href={`tel:${church.phone}`} className="flex items-center gap-3 px-4 py-4 text-sm text-neutral-700 transition-colors hover:bg-accent-50 dark:text-neutral-200 dark:hover:bg-neutral-900">
+          <Phone className="h-4 w-4 flex-shrink-0 text-teal-700 dark:text-teal-300" />
           <span>{church.phone}</span>
         </a>
       ),
@@ -65,7 +65,7 @@ export default function Hero({ church, backgroundImage }) {
 
         <div className="relative mx-auto flex min-h-[430px] max-w-7xl items-center px-4 py-12 sm:min-h-[500px] sm:px-6 sm:py-16 lg:min-h-[560px]">
           <div className="max-w-2xl">
-            <p className="mb-4 text-sm font-semibold text-gold-200">{church?.name || t('app.name')}</p>
+            <p className="mb-4 text-sm font-semibold text-accent-200">{church?.name || t('app.name')}</p>
             <h1 className="max-w-2xl font-display text-4xl font-semibold leading-tight text-white sm:text-5xl lg:text-6xl">
               {t('landing.welcomeMessage')}
             </h1>

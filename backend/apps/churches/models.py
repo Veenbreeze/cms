@@ -1,6 +1,7 @@
 from django.db import models
 
 from apps.core.models import BaseModel
+from .constants import DEFAULT_CHURCH_NAME, DEFAULT_INSTAGRAM_URL, YOUTUBE_CHANNEL_NAME
 
 ASSIGNMENT_STRATEGY_CHOICES = [
     ("least_loaded", "Least loaded Jumuia"),
@@ -19,7 +20,7 @@ class Church(BaseModel):
     even though this build assumes a single active row.
     """
 
-    name = models.CharField(max_length=255)
+    name = models.CharField(max_length=255, default=DEFAULT_CHURCH_NAME)
     short_name = models.CharField(max_length=50, blank=True, help_text="Used as the Member ID prefix, e.g. 'SMP'.")
     logo = models.ImageField(upload_to="church/logo/", blank=True, null=True)
     address = models.TextField(blank=True)
@@ -33,8 +34,9 @@ class Church(BaseModel):
     # Social links + short public description, editable from Settings later
     description = models.TextField(blank=True)
     facebook_url = models.URLField(blank=True)
-    instagram_url = models.URLField(blank=True)
+    instagram_url = models.URLField(blank=True, default=DEFAULT_INSTAGRAM_URL)
     youtube_url = models.URLField(blank=True)
+    youtube_channel_name = models.CharField(max_length=150, blank=True, default=YOUTUBE_CHANNEL_NAME)
 
     # Mobile-money giving/control numbers (e.g. Tanzania "Lipa Namba"), each with a short label
     giving_number_1 = models.CharField(max_length=50, blank=True)

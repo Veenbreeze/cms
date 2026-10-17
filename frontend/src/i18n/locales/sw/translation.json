@@ -37,7 +37,8 @@
     "leadership": "Uongozi",
     "newsEvents": "Habari na Matukio",
     "faq": "Maswali",
-    "prayerRequest": "Ombi la Maombi"
+    "prayerRequest": "Ombi la Maombi",
+    "prayerRequests": "Maombi ya Waumini"
   },
   "common": {
     "save": "Hifadhi",
@@ -59,6 +60,8 @@
     "inactive": "Haiko Hai",
     "required": "Sehemu hii inahitajika.",
     "viewAll": "Ona zote",
+    "all": "Zote",
+    "review": "Kagua",
     "confirm": "Thibitisha",
     "male": "Mwanaume",
     "female": "Mwanamke",
@@ -491,6 +494,7 @@
     "getDirections": "Pata Mwelekeo",
     "followUsTitle": "Tufuate",
     "noContactInfoYet": "Maelezo ya mawasiliano hayajachapishwa bado.",
+    "mapTitle": "Mahali pa kanisa",
     "givingTitle": "Changia / Lipa Namba",
     "givingNumber1": "Namba ya Kwanza",
     "givingNumber1Label": "Maelezo ya Namba ya Kwanza",
@@ -504,10 +508,27 @@
     "emailLabel": "Barua Pepe Yako",
     "requestLabel": "Ombi la Maombi",
     "requestPlaceholder": "Shiriki ombi lako la maombi hapa...",
-    "confidentialNote": "Ombi lako linatumwa moja kwa moja na kwa faragha kwa timu yetu ya kichungaji kupitia barua pepe.",
+    "confidentialNote": "Ombi lako ni la faragha. Wasimamizi wa kanisa walioidhinishwa pekee ndio wanaoweza kuliona.",
     "submit": "Tuma Ombi la Maombi",
-    "missingEmailTitle": "Maombi ya Mtandaoni Hayapatikani Bado",
-    "missingEmailBody": "Hatuwezi kutuma maombi ya maombi mtandaoni kwa sasa. Tafadhali wasiliana na ofisi ya kanisa moja kwa moja."
+    "eyebrow": "Ujumbe wa faragha kwa timu yetu ya maombi",
+    "submitted": "Ombi lako limetumwa kwa faragha kwa timu ya kanisa.",
+    "myRequests": "Maombi yangu",
+    "noRequests": "Bado hujatuma ombi la maombi.",
+    "adminEyebrow": "Huduma ya kichungaji",
+    "inboxTitle": "Maombi ya waumini",
+    "requester": "Aliyetuma",
+    "status": "Hali",
+    "internalNotes": "Maelezo ya ndani ya watumishi",
+    "confidential": "Faragha",
+    "reviewTitle": "Kagua ombi la maombi",
+    "filterStatus": "Chuja kwa hali",
+    "noInboxRequests": "Hakuna maombi yanayolingana na kichujio hiki.",
+    "statuses": {
+      "NEW": "Jipya",
+      "PRAYING": "Linaombewa",
+      "ANSWERED": "Limepata jibu",
+      "CLOSED": "Limefungwa"
+    }
   },
   "faq": {
     "heroTitle": "Maswali Yanayoulizwa Mara kwa Mara",

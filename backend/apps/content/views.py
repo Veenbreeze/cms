@@ -7,11 +7,11 @@ from rest_framework.decorators import action
 from rest_framework.filters import SearchFilter
 from rest_framework.generics import RetrieveAPIView
 from rest_framework.parsers import FormParser, JSONParser, MultiPartParser
-from rest_framework.permissions import AllowAny
+from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from apps.core.permissions import IsStaffRole, IsStaffRoleOrReadOnly
+from apps.core.permissions import IsChurchAdminOrAbove, IsStaffRole, IsStaffRoleOrReadOnly
 
 from .filters import AnnouncementFilterSet, EventFilterSet, GalleryImageFilterSet, SongFilterSet, WeeklyLessonFilterSet
 from .models import (
@@ -20,6 +20,7 @@ from .models import (
     Event,
     GalleryCategory,
     GalleryImage,
+    PrayerRequest,
     QRCodeRecord,
     Song,
     WeeklyLesson,
@@ -30,6 +31,9 @@ from .serializers import (
     EventSerializer,
     GalleryCategorySerializer,
     GalleryImageSerializer,
+    AdminPrayerRequestSerializer,
+    MemberPrayerRequestSerializer,
+    PublicPrayerRequestSerializer,
     PublicSongCollectionSerializer,
     QRCodeRecordSerializer,
     SongSerializer,
@@ -146,6 +150,46 @@ class EventViewSet(ChurchScopedContextMixin, viewsets.ModelViewSet):
 
     def perform_destroy(self, instance):
         instance.delete()
+
+
+class PrayerRequestViewSet(viewsets.ModelViewSet):
+    queryset = PrayerRequest.objects.active().select_related("submitted_by")
+    filterset_fields = ["status"]
+
+    def get_permissions(self):
+        if self.action == "create":
+            return [AllowAny()]
+        if self.action == "mine":
+            return [IsAuthenticated()]
+        return [IsChurchAdminOrAbove()]
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        if self.action == "mine":
+            return queryset.filter(submitted_by=self.request.user)
+        return queryset
+
+    def get_serializer_class(self):
+        if self.action == "create":
+            return PublicPrayerRequestSerializer
+        if self.action == "mine":
+            return MemberPrayerRequestSerializer
+        return AdminPrayerRequestSerializer
+
+    def perform_create(self, serializer):
+        user = self.request.user
+        serializer.save(submitted_by=user if user.is_authenticated else None)
+
+    def perform_destroy(self, instance):
+        instance.delete()
+
+    @action(detail=False, methods=["get"])
+    def mine(self, request):
+        requests = self.get_queryset()
+        page = self.paginate_queryset(requests)
+        if page is not None:
+            return self.get_paginated_response(self.get_serializer(page, many=True).data)
+        return Response(self.get_serializer(requests, many=True).data)
 
 
 # ---- Public (unauthenticated) endpoints ----

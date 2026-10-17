@@ -174,3 +174,27 @@ class Event(BaseModel):
 
     def __str__(self):
         return self.title
+
+
+class PrayerRequest(BaseModel):
+    class Status(models.TextChoices):
+        NEW = "NEW", "New"
+        PRAYING = "PRAYING", "Being prayed for"
+        ANSWERED = "ANSWERED", "Answered"
+        CLOSED = "CLOSED", "Closed"
+
+    name = models.CharField(max_length=150)
+    email = models.EmailField(blank=True)
+    message = models.TextField()
+    submitted_by = models.ForeignKey(
+        "accounts.User", on_delete=models.SET_NULL, null=True, blank=True, related_name="prayer_requests"
+    )
+    status = models.CharField(max_length=10, choices=Status.choices, default=Status.NEW)
+    is_confidential = models.BooleanField(default=True)
+    internal_notes = models.TextField(blank=True)
+
+    class Meta:
+        ordering = ["-created_at"]
+
+    def __str__(self):
+        return f"Prayer request from {self.name} ({self.created_at:%Y-%m-%d})"

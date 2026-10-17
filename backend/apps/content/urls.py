@@ -8,6 +8,7 @@ from .views import (
     GalleryCategoryViewSet,
     GalleryImageViewSet,
     PublicLandingFeedView,
+    PrayerRequestViewSet,
     PublicSongCollectionScanView,
     PublicSongCollectionView,
     QRCodeRecordViewSet,
@@ -24,6 +25,7 @@ router.register("qr-codes", QRCodeRecordViewSet, basename="qr-code")
 router.register("gallery-categories", GalleryCategoryViewSet, basename="gallery-category")
 router.register("gallery-images", GalleryImageViewSet, basename="gallery-image")
 router.register("events", EventViewSet, basename="event")
+router.register("prayer-requests", PrayerRequestViewSet, basename="prayer-request")
 
 urlpatterns = [
     path("", include(router.urls)),
